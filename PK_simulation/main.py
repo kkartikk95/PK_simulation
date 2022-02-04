@@ -1,7 +1,10 @@
 import time
 import serial as serial
+from datetime import datetime
 import GUI
 ser = serial.Serial('COM4', 9600, timeout=5)
+f = open("logfile.txt", "a")
+now = datetime.now()
 # U7U97ZS10I5A181490O6A0
 def Serial():
     # ser = serial.Serial('COM4', 9600, timeout=5)
@@ -23,36 +26,44 @@ def status():
 
 
 def initialization():
-    print("------------------------------RUNNING INITIALIZATION----------------------------")
+    print("------------------------------RUNNING INITIALIZATION----------------------------", file = f)
     # ser = serial.Serial('COM4', 9600, timeout=5)
     sts = status()
     while sts != 96:
         print("Waiting...")
         sts = status()
     ser.write(("/1U7U97ZR" + "\r").encode())
+    now = datetime.now()
+    print(now.strftime("%H:%M:%S") + " " + "Pump Initialized", file = f)
     resp = ser.read(10)
     print(resp[3])
     # ser.close()
 
 
 def mediaprep():
-    print("---------------------------MEDIA PREP STEP------------------------------")
+    print("---------------------------MEDIA PREP STEP------------------------------", file = f)
     # ser = serial.Serial('COM4', 9600, timeout=5)
     sts = status()
     while sts != 96:
         print("Waiting...")
         sts = status()
     ser.write(("/1S23I4P1000,1R" + "\r").encode())
+    now = datetime.now()
+    print(now.strftime("%H:%M:%S") + " " + "Aspirating 1ml from I4", file = f)
     sts = status()
     while(sts != 96 ):
         print("Aspirating 1ml from I4")
         sts = status()
     ser.write(("/1S24I3P1000,1R" + "\r").encode())
+    now = datetime.now()
+    print(now.strftime("%H:%M:%S") + " " + "Aspirating 1ml from I3", file = f)
     sts = status()
     while (sts != 96):
         print("Aspirating 1ml from I3")
         sts = status()
     ser.write(("/1S27I2P500,1R" + "\r").encode())
+    now = datetime.now()
+    print(now.strftime("%H:%M:%S") + " " + "Aspirating air from I2", file = f)
     sts = status()
     while (sts != 96):
         print("Aspirating air")
@@ -61,33 +72,41 @@ def mediaprep():
 
 
 def cellculture():
-    print("---------------------------FEEDING CELL CULTURE------------------------------------")
+    print("---------------------------FEEDING CELL CULTURE------------------------------------", file = f)
     # ser = serial.Serial('COM4', 9600, timeout=5)
     sts = status()
     while sts != 96:
         print("Waiting...")
         sts = status()
     ser.write(("/1S36O5D2000,1R" + "\r").encode())
+    now = datetime.now()
+    print(now.strftime("%H:%M:%S") + " " + "Dispensing media to culture", file = f)
     sts = status()
     while (sts != 96):
         print("Dispensing for culture")
         sts = status()
     ser.write(("/1S27O5D500,1R" + "\r").encode())
+    now = datetime.now()
+    print(now.strftime("%H:%M:%S")+ " " + "Dispensing Air to culture", file = f)
     sts = status()
     while (sts != 96):
         print("Dispensing air for culture")
         sts = status()
-    ser.write(("/1S34I5P2000,1R" + "\r").encode())
+    ser.write(("/1S34I5P2500,1R" + "\r").encode())
+    now = datetime.now()
+    print(now.strftime("%H:%M:%S") + " " + "Aspirating old from culture", file = f)
     sts = status()
     while (sts != 96):
         print("Aspirating from culture")
         sts = status()
-    ser.write(("/1S27I2P500,1R" + "\r").encode())
-    sts = status()
-    while (sts != 96):
-        print("Aspirating air")
-        sts = status()
-    ser.write(("/1S36O6D500,1R" + "\r").encode())
+    # ser.write(("/1S27I2P500,1R" + "\r").encode())
+    # sts = status()
+    # while (sts != 96):
+    #     print("Aspirating air")
+    #     sts = status()
+    ser.write(("/1S30O6D500,1R" + "\r").encode())
+    now = datetime.now()
+    print(now.strftime("%H:%M:%S") + " " + "Dispensing to Sample", file = f)
     sts = status()
     while (sts != 96):
         print("Dispensing to sample")
@@ -95,33 +114,44 @@ def cellculture():
 
 
 def cleanup():
-    print("------------------------------CLEANING UP--------------------------------------")
+    print("------------------------------CLEANING UP--------------------------------------", file = f)
     sts = status()
     while sts != 96:
         print("Waiting...")
         sts = status()
     ser.write(("/1S30O1D1500,1R" + "\r").encode())
+    now = datetime.now()
+    print(now.strftime("%H:%M:%S") + " " + "Dispensing to waste", file = f)
     sts = status()
     while (sts != 96):
         print("Dispensing to waste")
         sts = status()
     ser.write(("/1S27O1D500,1R" + "\r").encode())
+    now = datetime.now()
+    print(now.strftime("%H:%M:%S") + " " + "Dispensing to waste", file = f)
     sts = status()
     while (sts != 96):
         print("Dispensing to waste")
         sts = status()
     ser.write(("/1S27I2P500,1R" + "\r").encode())
+    now = datetime.now()
+    print(now.strftime("%H:%M:%S") + " " + "Aspirating air for blowout", file = f)
     sts = status()
     while (sts != 96):
         print("Aspirating air")
         sts = status()
     ser.write(("/1S27O1D500,1R" + "\r").encode())
+    now = datetime.now()
+    print(now.strftime("%H:%M:%S") + " " + "Dispensing to waste blowout", file = f)
     sts = status()
     while (sts != 96):
         print("Dispensing for blowout to waste")
         sts = status()
     ser.write(("/1I3R" + "\r").encode())
+    now = datetime.now()
+    print(now.strftime("%H:%M:%S") + " " + "Finished run", file = f)
     ser.close()
+
 
 if __name__ == "__main__":
     # Serial()
@@ -133,3 +163,4 @@ if __name__ == "__main__":
     print("CellCulture Done")
     cleanup()
     print("CleanUP Done")
+
