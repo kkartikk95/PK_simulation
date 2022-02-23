@@ -133,3 +133,23 @@
 15:41:26 Aspirating air for blowout
 15:42:06 Dispensing to culture blowout
 15:43:26 Finished run
+------------------------------RUNNING INITIALIZATION----------------------------
+11:02:12 Pump Initialized
+---------------------------MEDIA PREP STEP------------------------------
+11:02:22 Aspirating 1ml from I4
+11:02:37 Aspirating 1ml from I3
+11:03:57 Aspirating air from I2
+---------------------------FEEDING CELL CULTURE------------------------------------
+11:04:22 Dispensing media to culture
+11:06:57 Dispensing Air to culture
+11:07:42 Aspirate air for culture
+11:08:22 Dispensing air for culture
+11:09:42 Aspirating old from culture
+11:12:58 Dispensing to Sample
+------------------------------CLEANING UP--------------------------------------
+11:13:28 Dispensing to waste
+11:14:33 Aspirate air for sample blowout
+11:16:08 Dispensing air for sample blowout
+11:17:38 Aspirating air for blowout
+11:18:18 Dispensing to culture blowout
+11:19:38 Finished run

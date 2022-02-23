@@ -1,9 +1,9 @@
 import time
 import serial as serial
 from datetime import datetime
-ser = serial.Serial('COM4', 9600, timeout=5)
-f = open("logfile.txt", "a")
-now = datetime.now()
+# ser = serial.Serial('COM4', 9600, timeout=5)
+# f = open("logfile.txt", "a")
+# now = datetime.now()
 # U7U97ZS10I5A181490O6A0
 
 
@@ -149,7 +149,7 @@ def cleanup():
         print("Dispensing to waste")
         sts = status()
 
-    ser.write(("/1S25I2P800,1R" + "\r").encode())
+    ser.write(("/1S25I2P900,1R" + "\r").encode())
     now = datetime.now()
     print(now.strftime("%H:%M:%S") + " " + "Aspirate air for sample blowout", file=f)
     sts = status()
@@ -157,7 +157,7 @@ def cleanup():
         print("Aspirate air for sample")
         sts = status()
 
-    ser.write(("/1S25O6D800,1R" + "\r").encode())
+    ser.write(("/1S25O6D900,1R" + "\r").encode())
     now = datetime.now()
     print(now.strftime("%H:%M:%S") + " " + "Dispensing air for sample blowout", file=f)
     sts = status()
@@ -188,6 +188,9 @@ def cleanup():
 
 
 if __name__ == "__main__":
+    ser = serial.Serial('COM4', 9600, timeout=5)
+    f = open("logfile.txt", "a")
+    now = datetime.now()
     # Serial()
     # while(1):
     initialization()
