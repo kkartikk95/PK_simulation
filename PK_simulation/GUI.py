@@ -1,8 +1,12 @@
 from tkinter import *
 from tkinter import filedialog
-
+import dataimport
+import pumpA1
+global filename
+global fname
 
 def selectFile():
+    global filename
     filename = filedialog.askopenfilename(initialdir="/", title="Choose a file")
     file.insert(0, filename)
     #fob=open(filename,'r')
@@ -11,9 +15,18 @@ def selectFile():
 
 def logFile():
     logger = log.get()
+    global fname
     fname = str("" + logger + ".txt")
     #txtfile = open(fname, "w")
     return fname
+
+def pump_program():
+    pmpaddr=adr.get()
+    mediaA11, mediaA12, mediaA21, mediaA22, mediaA31, mediaA32, mediaB11, mediaB12, mediaB21, mediaB22, mediaB31, mediaB32 = dataimport.datafunc(filename)
+    if pmpaddr == 1:
+        pumpA1.main(fname, mediaA11, mediaA12)
+
+
 if __name__ == "__main__":
     root = Tk()
     root.title("IL-2 PK SIMULATION")
@@ -34,7 +47,7 @@ if __name__ == "__main__":
     pumpaddr = OptionMenu(root, adr, 1, 2, 3, 4, 5, 6)
     pumpaddr.pack(pady=5)
 
-    start = Button(root, text="Start Program")
+    start = Button(root, text="Start Program", command=pump_program)
     start.pack()
 
     cancel = Button(root, text="Cancel Program")
