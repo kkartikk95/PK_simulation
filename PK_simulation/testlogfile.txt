@@ -1,0 +1,23 @@
+Media A volume: 400.0 ml
+Media B volume: 1600.0 ml
+
+------------------------------RUNNING INITIALIZATION----------------------------
+10:55:10 Pump Initialized
+---------------------------MEDIA PREP STEP------------------------------
+10:55:20 Aspirating 400.0 from I4
+10:55:45 Aspirating 1600.0 from I3
+10:56:55 Aspirating air from I2
+---------------------------FEEDING CELL CULTURE------------------------------------
+10:57:20 Dispensing media to culture
+10:59:55 Dispensing Air to culture
+11:00:40 Aspirate air for culture
+11:01:21 Dispensing air for culture
+11:02:41 Aspirating old from culture
+11:05:56 Dispensing to Sample
+------------------------------CLEANING UP--------------------------------------
+11:06:26 Dispensing to waste
+11:07:31 Aspirate air for sample blowout
+11:09:06 Dispensing air for sample blowout
+11:10:37 Aspirating air for blowout
+11:11:17 Dispensing to culture blowout
+11:12:37 Finished run
