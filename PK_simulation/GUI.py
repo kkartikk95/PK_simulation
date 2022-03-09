@@ -2,33 +2,34 @@ from tkinter import *
 from tkinter import filedialog
 import tkinter as tk
 import dataimport
-import extra
 import pumpA1
-global filename
-global fname
-
+# global filename
+# global fe
 
 
 def selectFile():
     global filename
-    filename = filedialog.askopenfilename(initialdir="/", title="Choose a file")
+    filename=filedialog.askopenfilename(initialdir="/", title="Choose a file")
     file.insert(0, filename)
     #fob=open(filename,'r')
     #print(fob.read())
-    return filename
+
 
 def logFile():
     logger = log.get()
-    global fname
-    fname = str("" + logger + ".txt")
+    global fe
+    fe = str("" + logger + ".txt")
     #txtfile = open(fname, "w")
-    return fname
+    return fe
+
 
 def pump_program():
+    global fe
     pmpaddr=adr.get()
     mediaA11, mediaA12, mediaA21, mediaA22, mediaA31, mediaA32, mediaB11, mediaB12, mediaB21, mediaB22, mediaB31, mediaB32 = dataimport.datafunc(filename)
     if pmpaddr == 1:
-        pumpA1.main(fname, mediaA11, mediaA12)
+        pumpA1.main(fe, mediaA11, mediaA12)
+
 
 
 if __name__ == "__main__":
