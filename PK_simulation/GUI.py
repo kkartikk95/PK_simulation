@@ -1,9 +1,13 @@
 from tkinter import *
 from tkinter import filedialog
+import tkinter as tk
 import dataimport
+import extra
 import pumpA1
 global filename
 global fname
+
+
 
 def selectFile():
     global filename
@@ -30,28 +34,36 @@ def pump_program():
 if __name__ == "__main__":
     root = Tk()
     root.title("IL-2 PK SIMULATION")
-    root.geometry("400x400")
+    root.geometry("800x800")
 
     file = Entry(root, width=45)
     file.pack()
     myButton = Button(root, text="Choose a CSV File", command=selectFile)
-    myButton.pack(pady=5)
+    myButton.pack(pady=20)
 
     log = Entry(root, width=45)
     log.pack(pady=5)
     button2 = Button(root, text="Log file name", command=logFile)
-    button2.pack(pady=5)
+    button2.pack()
+    lbl = Label(root, text="Don't add .txt, just type the name")
+    lbl.pack()
 
     adr = IntVar()
     adr.set("Select Pump")
     pumpaddr = OptionMenu(root, adr, 1, 2, 3, 4, 5, 6)
-    pumpaddr.pack(pady=5)
+    pumpaddr.pack(pady=10)
+
+    text = Text(root, width = 45)
+    text.pack(pady=5)
+# for testing purposes only
+#     button3 = Button(root, text="test", command=runextra)
+#     button3.pack(pady=20)
 
     start = Button(root, text="Start Program", command=pump_program)
-    start.pack()
+    start.pack(side=LEFT, padx=210)
 
     cancel = Button(root, text="Cancel Program")
-    cancel.pack()
+    cancel.pack(side=LEFT)
 
     root.mainloop()
 
