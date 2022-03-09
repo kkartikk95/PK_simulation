@@ -44,7 +44,7 @@ if __name__ == "__main__":
 
     log = Entry(root, width=45)
     log.pack(pady=5)
-    button2 = Button(root, text="Log file name", command=logFile)
+    button2 = Button(root, text="Create log file", command=logFile)
     button2.pack()
     lbl = Label(root, text="Don't add .txt, just type the name")
     lbl.pack()
@@ -54,8 +54,16 @@ if __name__ == "__main__":
     pumpaddr = OptionMenu(root, adr, 1, 2, 3, 4, 5, 6)
     pumpaddr.pack(pady=10)
 
-    text = Text(root, width = 45)
-    text.pack(pady=5)
+    lbl1 = Label(root, text="NOTES:\n"
+                            "1. Remember to add CSV file.\n"
+                            "2. Give the log file a name do not add .txt to file name. That will happen automatically\n"
+                            "3. Press the create log file button after giving the name\n"
+                            "4. Pump address for now is 1 rest will be added soon\n"
+                            "5. Once the program starts it will not stop. Will add functionality in upcoming versions\n"
+                            "6. Runtime is 18 mins for testing purposes now\n"
+                            "7. Log files and software files will located in C:\Users\grobot\Documents\GUI folder\n"
+                            "8. Test csv file for media volumes is in desktop named as test.csv")
+    lbl1.pack(pady=5)
 # for testing purposes only
 #     button3 = Button(root, text="test", command=runextra)
 #     button3.pack(pady=20)
