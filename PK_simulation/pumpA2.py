@@ -1,7 +1,6 @@
 import time
 import serial as serial
 from datetime import datetime
-
 # ser = serial.Serial('COM4', 9600, timeout=5)
 # f = open("logfile.txt", "a")
 # now = datetime.now()
@@ -15,9 +14,10 @@ from datetime import datetime
 #     print(test[3])
 #     ser.close()
 
+
 def status(ser):
     print("------------------------------QUERYING STATUS OF THE PUMP------------------------------")
-    #ser = serial.Serial('COM4', 9600, timeout=5)
+    # ser = serial.Serial('COM4', 9600, timeout=5)
     ser.write(("/1Q" + "\r").encode())
     resp = ser.read(10)
     print(resp[3])
@@ -28,7 +28,6 @@ def status(ser):
 
 def initialization(f, ser):
     print("------------------------------RUNNING INITIALIZATION----------------------------", file=f)
-
     # ser = serial.Serial('COM4', 9600, timeout=5)
     sts = status(ser)
     while sts != 96:
@@ -38,7 +37,6 @@ def initialization(f, ser):
     ser.write(("/1U7U97ZR" + "\r").encode())
     now = datetime.now()
     print(now.strftime("%H:%M:%S") + " " + "Pump Initialized", file=f)
-
     resp = ser.read(10)
     print(resp[3])
     # ser.close()
@@ -187,18 +185,17 @@ def cleanup(f, ser):
     # ser.close()
 
 
-def main(logfile, mediaA11, mediaA12):
+def main(logfile, mediaA21, mediaA22):
     ser = serial.Serial('COM4', 9600, timeout=5)
     f = open(logfile, "a")
     now = datetime.now()
     # Serial()
     # while(1):
-    x = len(mediaA11)
-    y = len(mediaA12)
-    #for i in range(0, x):
-    if x==y:
-        ma1 = str(mediaA11[0]*1000)
-        ma2 = str(mediaA12[0]*1000)
+    x = len(mediaA21)
+    y = len(mediaA22)
+    if x == y:
+        ma1 = str(mediaA21[0]*1000)
+        ma2 = str(mediaA22[0]*1000)
         print("Media A volume: "+ma1+" ml\nMedia B volume: "+ma2+" ml\n", file=f)
         initialization(f, ser)
         print("Initialization Done")
