@@ -195,10 +195,10 @@ def main(logfile, mediaA11, mediaA12):
     # while(1):
     x = len(mediaA11)
     y = len(mediaA12)
-    #for i in range(0, x):
-    if x==y:
-        ma1 = str(mediaA11[0]*1000)
-        ma2 = str(mediaA12[0]*1000)
+    for i in range(0, x):
+    # if x==y:
+        ma1 = str(mediaA11[i]*1000)
+        ma2 = str(mediaA12[i]*1000)
         print("Media A volume: "+ma1+" ml\nMedia B volume: "+ma2+" ml\n", file=f)
         initialization(f, ser)
         print("Initialization Done")
