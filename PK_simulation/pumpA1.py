@@ -15,15 +15,15 @@ from datetime import datetime
 #     print(test[3])
 #     ser.close()
 
-# def status(ser):
-#     print("------------------------------QUERYING STATUS OF THE PUMP------------------------------")
-#     #ser = serial.Serial('COM4', 9600, timeout=5)
-#     ser.write(("/1Q" + "\r").encode())
-#     resp = ser.read(10)
-#     print(resp[3])
-#     resp = resp[3]
-#     # ser.close()
-#     return resp
+def status(ser):
+    print("------------------------------QUERYING STATUS OF THE PUMP------------------------------")
+    #ser = serial.Serial('COM4', 9600, timeout=5)
+    ser.write(("/1Q" + "\r").encode())
+    resp = ser.read(10)
+    print(resp[3])
+    resp = resp[3]
+    # ser.close()
+    return resp
 
 
 def initialization(f, ser):
